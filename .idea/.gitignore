@@ -1,0 +1,8 @@
+# Default ignored files
+/../../Connect4Game /.idea/shelf/
+/../../Connect4Game /.idea/workspace.xml
+# Editor-based HTTP Client requests
+/../../Connect4Game /.idea/httpRequests/
+# Datasource local storage ignored files
+/../../Connect4Game /.idea/dataSources/
+/../../Connect4Game /.idea/dataSources.local.xml
