@@ -38,7 +38,7 @@ class Game:
                 continue
 
             if not self.make_move(col):
-                continue  # 无法落子，重试
+                continue  # Invalid move, retry
 
             if self.check_win():
                 self.display_board()
@@ -52,35 +52,35 @@ class Game:
 
             self.switch_player()
 
-        # 是否再玩一次
+        # Ask if user wants to play again
         again = input("Do you want to play again? (y/n): ").lower()
         if again == 'y':
-            self.__init__()  # 重新初始化棋盘
+            self.__init__()  # Reinitialize the board
             self.play()
 
     def check_win(self):
         b = self.board
         p = self.current_player
 
-        # 横向检查
+        # Check horizontal
         for row in range(6):
-            for col in range(4):  # 最右边3列不可能横向组成4个
+            for col in range(4):  # The last 3 columns can't form a horizontal line of 4
                 if b[row][col] == b[row][col + 1] == b[row][col + 2] == b[row][col + 3] == p:
                     return True
 
-        # 纵向检查
-        for row in range(3):  # 最下面3行才能往下延伸4个
+        # Check vertical
+        for row in range(3):  # Only the top 3 rows can form vertical lines of 4
             for col in range(7):
                 if b[row][col] == b[row + 1][col] == b[row + 2][col] == b[row + 3][col] == p:
                     return True
 
-        # 正对角线 ↘ 检查
+        # Check diagonal ↘
         for row in range(3):
             for col in range(4):
                 if b[row][col] == b[row + 1][col + 1] == b[row + 2][col + 2] == b[row + 3][col + 3] == p:
                     return True
 
-        # 反对角线 ↙ 检查
+        # Check anti-diagonal ↙
         for row in range(3):
             for col in range(3, 7):
                 if b[row][col] == b[row + 1][col - 1] == b[row + 2][col - 2] == b[row + 3][col - 3] == p:
@@ -99,7 +99,3 @@ class Game:
 
     def get_current_player(self):
         return self.current_player
-
-
-
-

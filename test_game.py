@@ -22,18 +22,18 @@ class TestGame(unittest.TestCase):
         game = Game()
         for i in range(6):
             self.assertTrue(game.make_move(0))
-        self.assertFalse(game.make_move(0))  # 第7次应该失败
+        self.assertFalse(game.make_move(0))  # The 7th move should fail (column is full)
 
     def test_make_invalid_move(self):
         game = Game()
-        self.assertFalse(game.make_move(7))  # Invalid column
-        self.assertFalse(game.make_move(-1))  # Invalid column
+        self.assertFalse(game.make_move(7))  # Column index too high
+        self.assertFalse(game.make_move(-1))  # Column index too low
 
     def test_make_move_in_full_column(self):
         game = Game()
         for _ in range(6):
             game.make_move(0)
-        self.assertFalse(game.make_move(0))
+        self.assertFalse(game.make_move(0))  # Column should be full now
 
     def test_switch_player(self):
         game = Game()
